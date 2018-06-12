@@ -25,6 +25,25 @@ extern "C"
 #define DLL_API __declspec(dllexport)
 #endif
 
+/***********************************************
+* class AuEngine:
+* All audio engine for OpenAu.exe
+***********************************
+* enum OpSet:
+* contain enums for OpSet (Operation Set)
+*
+* enum PCM_File:
+* contain enums for PCM Formats
+*
+* class Exception:
+* Exception class for AuEngine
+*
+* class Output:
+* Output class for AuEngine
+*
+* class Input:
+* Input class for AuEngine
+***********************************************/
 __declspec(dllexport) class AuEngine
 {
 public:
@@ -45,6 +64,15 @@ public:
 		STREAM_ERROR,
 		MEMORY_ERROR,
 		MAX_VAL = 0xFFFF
+	};
+
+	enum PCM_File
+	{
+		WAV_FILE = 1,
+		AIF_FILE = 2,
+		AIFF_FILE = 4,
+		MP3_FILE = 8,
+		MAX_VALUE = 0xFFFF
 	};
 
 	// Exception Class
@@ -71,7 +99,8 @@ public:
 	public:
 		Output() {}
 		~Output() {}
-		DLL_API void CreateStream(PaDeviceIndex paDevice, const char* lpFileName);
+		void ReadChunks();
+		DLL_API void CreateStream(PaDeviceIndex paDevice);
 		void FinishedCallbackMsg(void *userData);
 		DLL_API void CloseStream();
 		void OutputThread(const char* lpName);
@@ -90,7 +119,7 @@ public:
 	{
 	public:
 		DLL_API void GetListOfDevices();
-		DLL_API void ReadAudioFile();
+		DLL_API void ReadAudioFile(const char* lpFileName, int iFileType);
 	private:
 		int numDevices, defaultDisplayed;
 		const PaDeviceInfo *deviceInfo;

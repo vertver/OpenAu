@@ -1,13 +1,14 @@
 ﻿  AuEngine.cpp
-i:\oau\auengine\auengine.h(103): warning C4091: __declspec(dllexport): пропускается слева от "AuEngine", когда ни одна переменная не объявлена
-i:\oau\auengine\auengine.cpp(52): warning C4267: -=: преобразование из "size_t" в "unsigned long"; возможна потеря данных
-i:\oau\auengine\auengine.cpp(172): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(132): warning C4101: wmmeStreamInfo: неиспользованная локальная переменная
-i:\oau\auengine\auengine.cpp(303): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(304): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(305): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(306): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(352): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(357): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(362): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+i:\oau\auengine\auengine.h(132): warning C4091: __declspec(dllexport): пропускается слева от "AuEngine", когда ни одна переменная не объявлена
+i:\oau\auengine\auengine.cpp(71): warning C4267: -=: преобразование из "size_t" в "unsigned long"; возможна потеря данных
+i:\oau\auengine\auengine.cpp(227): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(220): warning C4101: wmmeStreamInfo: неиспользованная локальная переменная
+i:\oau\auengine\auengine.cpp(380): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(381): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(382): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(383): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(386): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+i:\oau\auengine\auengine.cpp(427): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(432): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(437): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
   AuEngine.vcxproj -> I:\OAU\x64\Debug\AuEngine.dll

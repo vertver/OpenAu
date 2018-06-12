@@ -10,11 +10,6 @@
 
 #include <windows.h>
 #include <string>
+
 void Msg(std::string szMessage);
 void Msg(std::string szMessage, int iNum);
-
-struct buffer_data
-{
-	uint8_t *ptr;
-	size_t size; // size left in the buffer
-};
