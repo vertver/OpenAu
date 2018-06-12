@@ -1,0 +1,10 @@
+﻿  AuEngine.cpp
+i:\openau\openau\auengine\AuEngine.h(102): warning C4091: __declspec(dllexport): пропускается слева от "AuEngine", когда ни одна переменная не объявлена
+AuEngine.cpp(62): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+     Создается библиотека I:\OpenAu\OpenAu\x64\Release\AuEngine.lib и объект I:\OpenAu\OpenAu\x64\Release\AuEngine.exp
+  Создание кода
+  31 of 197 functions (15.7%) were compiled, the rest were copied from previous compilation.
+    16 functions were new in current compilation
+    27 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  AuEngine.vcxproj -> I:\OpenAu\OpenAu\x64\Release\AuEngine.dll

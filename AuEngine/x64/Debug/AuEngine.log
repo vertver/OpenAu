@@ -1,0 +1,14 @@
+﻿  dllmain.cpp
+  AuEngine.cpp
+i:\oau\auengine\auengine.h(102): warning C4091: __declspec(dllexport): пропускается слева от "AuEngine", когда ни одна переменная не объявлена
+i:\oau\auengine\auengine.cpp(62): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(196): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(197): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(198): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(199): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(245): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(250): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+i:\oau\auengine\auengine.cpp(255): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
+  Создание кода...
+     Создается библиотека I:\OAU\x64\Debug\AuEngine.lib и объект I:\OAU\x64\Debug\AuEngine.exp
+  AuEngine.vcxproj -> I:\OAU\x64\Debug\AuEngine.dll

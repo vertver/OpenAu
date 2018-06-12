@@ -1,0 +1,66 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenAu", "OpenAu\OpenAu.vcxproj", "{DAE95E71-FC90-3B8D-9625-31604F38D120}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79} = {BC04BCAE-3745-4D50-94F0-FAE566E90A79}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuEngine", "AuEngine\AuEngine.vcxproj", "{BC04BCAE-3745-4D50-94F0-FAE566E90A79}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PortAudio", "PortAudio\build\msvc\PortAudio.vcxproj", "{0A18A071-125E-442F-AFF7-A3F68ABECF99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+		ReleaseMinDependency|x64 = ReleaseMinDependency|x64
+		ReleaseMinDependency|x86 = ReleaseMinDependency|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.Debug|x64.ActiveCfg = Debug|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.Debug|x64.Build.0 = Debug|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.Debug|x86.ActiveCfg = Debug|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.Release|x64.ActiveCfg = Release|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.Release|x64.Build.0 = Release|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.Release|x86.ActiveCfg = Release|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.ReleaseMinDependency|x64.ActiveCfg = Release|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.ReleaseMinDependency|x64.Build.0 = Release|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.ReleaseMinDependency|x86.ActiveCfg = Release|x64
+		{DAE95E71-FC90-3B8D-9625-31604F38D120}.ReleaseMinDependency|x86.Build.0 = Release|x64
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Debug|x64.ActiveCfg = Debug|x64
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Debug|x64.Build.0 = Debug|x64
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Debug|x86.ActiveCfg = Debug|Win32
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Debug|x86.Build.0 = Debug|Win32
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Release|x64.ActiveCfg = Release|x64
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Release|x64.Build.0 = Release|x64
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Release|x86.ActiveCfg = Release|Win32
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.Release|x86.Build.0 = Release|Win32
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.ReleaseMinDependency|x64.ActiveCfg = Release|x64
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.ReleaseMinDependency|x64.Build.0 = Release|x64
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.ReleaseMinDependency|x86.ActiveCfg = Release|Win32
+		{BC04BCAE-3745-4D50-94F0-FAE566E90A79}.ReleaseMinDependency|x86.Build.0 = Release|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x64.ActiveCfg = Debug|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x64.Build.0 = Debug|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x86.ActiveCfg = Debug|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Debug|x86.Build.0 = Debug|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x64.ActiveCfg = Release|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x64.Build.0 = Release|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x86.ActiveCfg = Release|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.Release|x86.Build.0 = Release|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.ReleaseMinDependency|x64.ActiveCfg = ReleaseMinDependency|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.ReleaseMinDependency|x64.Build.0 = ReleaseMinDependency|x64
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.ReleaseMinDependency|x86.ActiveCfg = ReleaseMinDependency|Win32
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99}.ReleaseMinDependency|x86.Build.0 = ReleaseMinDependency|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		Qt5Version = msvc2017_64
+		SolutionGuid = {430528D8-429A-4DA2-94B6-2FC5F51A01D1}
+	EndGlobalSection
+EndGlobal
