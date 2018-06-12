@@ -17,7 +17,7 @@ OAU::OAU(QWidget *parent) : QMainWindow(parent), ui(new Ui::OAU)
 {
 	AuEngine::Input input;
 	AuEngine::Output output;
-	output.CreateOutput();
+	output.CreateOutput("I:\\Beliver (44.1-24 flac vs mp3 320).wav");
     ui->setupUi(this);
 	statusBar()->showMessage(tr(output.GetOutputDevice()));
 

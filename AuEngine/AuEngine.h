@@ -15,10 +15,11 @@ extern "C"
 {
 #include "../PortAudio/include/portaudio.h"
 #include "../PortAudio/include/pa_asio.h"
+#include "../PortAudio/include/pa_win_wmme.h"
 }
 
 #define THROW_EXCEPTION(x) 	throw AuEngine::Exception(x)
-#define DEBUG_BREAK __debugbreak();
+#define DEBUG_BREAK __debugbreak()
 #ifdef WIN32
 #pragma comment(lib, "../x64/Release/portaudio_x64.lib")
 #define DLL_API __declspec(dllexport)
@@ -70,11 +71,11 @@ public:
 	public:
 		Output() {}
 		~Output() {}
-		DLL_API void CreateStream(PaDeviceIndex paDevice);
+		DLL_API void CreateStream(PaDeviceIndex paDevice, const char* lpFileName);
 		void FinishedCallbackMsg(void *userData);
 		DLL_API void CloseStream();
-		void OutputThread();
-		DLL_API void CreateOutput();
+		void OutputThread(const char* lpName);
+		DLL_API void CreateOutput(const char* lpName);
 		DLL_API const char * GetOutputDevice();
 	private:
 		PaStream * stream;

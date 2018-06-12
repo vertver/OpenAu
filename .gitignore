@@ -31,3 +31,8 @@
 *.exe
 *.out
 *.app
+/.vs/OpenAu/v15/Solution.VC.db-wal
+/.vs/OpenAu/v15/Solution.VC.db-shm
+/.vs/OpenAu/v15/Solution.VC.db
+/.vs/OpenAu/v15/Browse.VC.db
+/.vs
