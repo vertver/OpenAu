@@ -1,0 +1,10 @@
+/////////////////////////////////
+// VERTVER, 2018 (C)
+// OpenAu, Open Audio Utility
+// MIT-License
+/////////////////////////////////
+// AuEngineVU.h:
+// VU-meter header
+/////////////////////////////////
+#pragma once
+#include "AuEngine.h"

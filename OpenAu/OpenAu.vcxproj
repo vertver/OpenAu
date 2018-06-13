@@ -87,7 +87,7 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>I:\QT5.1\5.10.1\MSVC2017_64\lib\qtmain.lib;shell32.lib;I:\QT5.1\5.10.1\MSVC2017_64\lib\Qt5Widgets.lib;I:\QT5.1\5.10.1\MSVC2017_64\lib\Qt5Gui.lib;I:\QT5.1\5.10.1\MSVC2017_64\lib\Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>I:\QT5.1\5.10.1\MSVC2017_64\lib\qtmain.lib;shell32.lib;I:\QT5.1\5.10.1\MSVC2017_64\lib\Qt5Widgets.lib;I:\QT5.1\5.10.1\MSVC2017_64\lib\Qt5Gui.lib;I:\QT5.1\5.10.1\MSVC2017_64\lib\Qt5Core.lib;Winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>I:\QT5.1\5.10.1\MSVC2017_64\lib;C:\utils\my_sql\my_sql\lib;C:\utils\postgresql\pgsql\lib;$(QTDIR)\lib;$(SolutionDir)\OpenAu\lib\;I:\OpenAu\OpenAu\OpenAu\x64\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>

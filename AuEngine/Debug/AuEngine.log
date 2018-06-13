@@ -1,4 +1,20 @@
 ﻿  dllmain.cpp
   AuEngine.cpp
+i:\oau\auengine\auengine.h(138): warning C4091: __declspec(dllexport): пропускается слева от "AuEngine", когда ни одна переменная не объявлена
+i:\oau\auengine\auengine.cpp(230): warning C4101: wmmeStreamInfo: неиспользованная локальная переменная
+i:\oau\auengine\auengine.cpp(398): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
   Создание кода...
-  AuEngine.vcxproj -> I:\OpenAu\OpenAu\Debug\AuEngine.dll
+     Создается библиотека I:\OAU\Debug\AuEngine.lib и объект I:\OAU\Debug\AuEngine.exp
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_Initialize в функции "public: void __thiscall AuEngine::Input::GetListOfDevices(void)" (?GetListOfDevices@Input@AuEngine@@QAEXXZ)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_GetHostApiInfo в функции "public: void __thiscall AuEngine::Input::GetListOfDevices(void)" (?GetListOfDevices@Input@AuEngine@@QAEXXZ)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_GetDeviceCount в функции "public: void __thiscall AuEngine::Input::GetListOfDevices(void)" (?GetListOfDevices@Input@AuEngine@@QAEXXZ)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_GetDefaultInputDevice в функции "public: void __thiscall AuEngine::Input::GetListOfDevices(void)" (?GetListOfDevices@Input@AuEngine@@QAEXXZ)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_GetDefaultOutputDevice в функции "public: void __thiscall AuEngine::Input::GetListOfDevices(void)" (?GetListOfDevices@Input@AuEngine@@QAEXXZ)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_GetDeviceInfo в функции "public: void __thiscall AuEngine::Output::CreateStream(int)" (?CreateStream@Output@AuEngine@@QAEXH@Z)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_IsFormatSupported в функции "public: void __thiscall AuEngine::Input::GetListOfDevices(void)" (?GetListOfDevices@Input@AuEngine@@QAEXXZ)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_OpenStream в функции "public: void __thiscall AuEngine::Output::CreateStream(int)" (?CreateStream@Output@AuEngine@@QAEXH@Z)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_CloseStream в функции "public: void __thiscall AuEngine::Output::CloseStream(void)" (?CloseStream@Output@AuEngine@@QAEXXZ)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _Pa_StartStream в функции "public: void __thiscall AuEngine::Output::CreateStream(int)" (?CreateStream@Output@AuEngine@@QAEXH@Z)
+AuEngine.obj : error LNK2019: ссылка на неразрешенный внешний символ _PaAsio_GetAvailableBufferSizes в функции "public: void __thiscall AuEngine::Input::GetListOfDevices(void)" (?GetListOfDevices@Input@AuEngine@@QAEXXZ)
+..\x64\Release\portaudio_x64.lib : warning LNK4272: тип компьютера библиотеки "x64" конфликтует с типом целевого компьютера "x86"
+I:\OAU\Debug\AuEngine.dll : fatal error LNK1120: неразрешенных внешних элементов: 11

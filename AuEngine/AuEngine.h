@@ -11,6 +11,7 @@
 #include <string>
 #include <windows.h>
 #include <math.h>
+#include <malloc.h>
 extern "C"
 {
 #include "../PortAudio/include/portaudio.h"
@@ -18,11 +19,16 @@ extern "C"
 #include "../PortAudio/include/pa_win_wmme.h"
 }
 
-#define THROW_EXCEPTION(x) 	throw AuEngine::Exception(x)
-#define DEBUG_BREAK __debugbreak()
+#define THROW_EXCEPTION(x) 		throw AuEngine::Exception(x)
+#define DEBUG_BREAK				__debugbreak()		// int 3
 #ifdef WIN32
+#define ENGINE_EXPORTS
 #pragma comment(lib, "../x64/Release/portaudio_x64.lib")
-#define DLL_API __declspec(dllexport)
+#endif
+#ifdef ENGINE_EXPORTS
+#define DLL_API					__declspec(dllexport)
+#else
+#define DLL_API					__declspec(dllimport)
 #endif
 
 /***********************************************
@@ -44,18 +50,14 @@ extern "C"
 * class Input:
 * Input class for AuEngine
 ***********************************************/
-__declspec(dllexport) class AuEngine
+namespace AuEngine
 {
-public:
-	AuEngine() {};
-	~AuEngine() { delete output; delete input; delete exc; };
-	AuEngine(size_t weight) {};
-
 	// Opset list for exception class
 	enum OpSet
 	{
 		SUCCESS_ERROR,
 		NO_AUDIO_DEVICE,
+		MME_ERROR,
 		ASIO_ERROR,
 		UI_ERROR,
 		INIT_ERROR,
@@ -63,17 +65,19 @@ public:
 		ENGINE_ERROR,
 		STREAM_ERROR,
 		MEMORY_ERROR,
-		MAX_VAL = 0xFFFF
+		MAX_VAL		= 0xFFFF
 	};
 
 	enum PCM_File
 	{
-		WAV_FILE = 1,
-		AIF_FILE = 2,
-		AIFF_FILE = 4,
-		MP3_FILE = 8,
-		MAX_VALUE = 0xFFFF
-	};
+		WAV_FILE	= 1,
+		AIF_FILE	= 2,
+		AIFF_FILE	= 3,
+		MP3_FILE	= 4,
+		MP3C_FILE	= 5,			// Mpeg-4 at MP3
+		FLAC_FLIE	= 6,
+		AAC_FILE	= 7
+	};	
 
 	// Exception Class
 	class Exception : std::exception
@@ -101,16 +105,19 @@ public:
 		~Output() {}
 		void ReadChunks();
 		DLL_API void CreateStream(PaDeviceIndex paDevice);
-		void FinishedCallbackMsg(void *userData);
+		void FinishedCallbackMsg(void* userData);
 		DLL_API void CloseStream();
 		void OutputThread(const char* lpName);
 		DLL_API void CreateOutput(const char* lpName);
-		DLL_API const char * GetOutputDevice();
+		DLL_API const char* GetOutputDevice();
+		DLL_API int GetCPULoadStream(float fLoad);
+		DLL_API int VUGetCurrentLevels();
+		int VUMeterForSample(int count, float *buffer);
+		void VUMeterInit();
 	private:
-		PaStream * stream;
+		PaStream* stream;
 		int left_phase;
 		int right_phase;
-		char message[20];
 		int numDevices, defaultDisplayed;
 		const PaDeviceInfo *deviceInfo;
 		PaStreamParameters inputParameters, outputParameters;
@@ -119,14 +126,10 @@ public:
 	{
 	public:
 		DLL_API void GetListOfDevices();
-		DLL_API void ReadAudioFile(const char* lpFileName, int iFileType);
+		DLL_API void ReadAudioFile(const char* lpFileName);
 	private:
 		int numDevices, defaultDisplayed;
 		const PaDeviceInfo *deviceInfo;
 		PaStreamParameters inputParameters, outputParameters;
 	};
-private:
-	AuEngine::Output* output;
-	AuEngine::Input* input;
-	AuEngine::Exception* exc;
 };

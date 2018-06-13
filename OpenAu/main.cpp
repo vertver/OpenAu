@@ -98,9 +98,16 @@ int main_impl(int argc, char *argv[])
 
 		case AuEngine::OpSet::NO_AUDIO_DEVICE:		// if audio device doesn't exist
 			ExceptionTextThrow("AuEngine Error: No audio device",
-				"No audio device. Please, check audio devices.",
+				"No audio device. Please, check your audio devices.",
 				"Audio device error");
 			return 0x000000C5;
+			break;
+
+		case AuEngine::OpSet::MME_ERROR:			// if audio device doesn't support MME
+			ExceptionTextThrow("AuEngine Error: No MME supported audio device",
+				"No MME supported audio device. Please, check your audio devices.",
+				"MME Audio device error");
+			return 0x000000FF;
 			break;
 
 		case AuEngine::OpSet::STREAM_ERROR:			// if output stream doesn't exist
