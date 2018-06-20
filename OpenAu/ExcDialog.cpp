@@ -27,9 +27,9 @@ void ExceptionDialog::on_buttonBox_accepted()
 
 }
 
-void ExceptionDialog::setTextToLabels(std::string sz1, std::string sz2)
+void ExceptionDialog::setTextToLabels(QString sz1, QString sz2)
 {
 	Ui::ExceptionDialog* ui;
-	ui->label_2->setText(sz1.c_str());
-	ui->label_3->setText(sz2.c_str());
+	ui->label_2->setText(sz1.toLocal8Bit());
+	ui->label_3->setText(sz1.toLocal8Bit());
 }

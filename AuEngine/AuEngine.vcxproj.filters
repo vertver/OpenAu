@@ -27,7 +27,7 @@
     <ClCompile Include="AuEngineVU.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="AuEngineMath.cpp">
+    <ClCompile Include="AuEngineFilesystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -36,9 +36,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AuEngineMath.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="AuEngineVU.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

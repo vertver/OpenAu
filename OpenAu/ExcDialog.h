@@ -24,13 +24,13 @@ class ExceptionDialog : public QDialog
 public:
     explicit ExceptionDialog(QWidget *parent = 0);
     ~ExceptionDialog();
-	void setTextToLabels(std::string sz1, std::string sz2);
+	void setTextToLabels(QString sz1, QString sz2);
 
 private slots:
     void on_buttonBox_accepted();
 
 private:
-    Ui::ExceptionDialog *ui;
+    Ui::ExceptionDialog* ui;
 };
 
 #endif // EXCXDIALOG_H

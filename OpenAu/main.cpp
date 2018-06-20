@@ -68,7 +68,7 @@ int main_impl(int argc, char *argv[])
 		w.show();
 		Msg("AuEngine: UI Loaded");
 
-		return a.exec();
+ 		return a.exec();
 	}
 	catch (AuEngine::Exception& exc)
 	{

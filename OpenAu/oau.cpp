@@ -18,8 +18,8 @@
 ***********************************************/
 OAU::OAU(QWidget *parent) : QMainWindow(parent), ui(new Ui::OAU)
 {
-	AuEngine::Input input;
-	AuEngine::Output output;
+	eInput input;
+	eOutput output;
 
     ui->setupUi(this);
 	statusBar()->showMessage(tr(output.GetOutputDevice()));	
@@ -41,7 +41,7 @@ OAU::~OAU()
 * ==UNUSED===
 * Throw exception dialog with info (Qt)
 ***********************************************/
-void OAU::ThrowExceptionDialog(std::string szException, std::string szDescription)
+void OAU::ThrowExceptionDialog(QString szException, QString szDescription)
 {
 	ExceptionDialog* excd;
 	excd->setWindowFlags(Qt::WindowStaysOnTopHint);

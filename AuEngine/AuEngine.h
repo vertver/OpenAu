@@ -19,8 +19,19 @@ extern "C"
 #include "../PortAudio/include/pa_win_wmme.h"
 }
 
+// Validating and checking
+#define CHECK(x)				{ if(!(x))				{  Msg("failure:" + __LINE__); } }
+#define PA_CHECK(x, y)			if (x != paNoError)		{ THROW_EXCEPTION(y); }
+
+void Msg(std::string szMessage);
+void Msg(std::string szMessage, int iNum);
+template<typename T> T freadNum(FILE* f);
+std::string freadStr(FILE* f, size_t len);
+
 #define THROW_EXCEPTION(x) 		throw AuEngine::Exception(x)
 #define DEBUG_BREAK				__debugbreak()		// int 3
+#define FFT_SIZE				1024
+
 #ifdef WIN32
 #define ENGINE_EXPORTS
 #pragma comment(lib, "../x64/Release/portaudio_x64.lib")
@@ -33,7 +44,7 @@ extern "C"
 
 /***********************************************
 * class AuEngine:
-* All audio engine for OpenAu.exe
+* All audio engine for OpenAu
 ***********************************
 * enum OpSet:
 * contain enums for OpSet (Operation Set)
@@ -78,7 +89,12 @@ namespace AuEngine
 		FLAC_FLIE	= 6,
 		AAC_FILE	= 7
 	};	
-
+	class FileSystem
+	{
+	public:
+		void CreateFileInBuffer(FILE * oFile, size_t szBuffer);
+		void OpenFileByPart(const char * lpPath);
+	};
 	// Exception Class
 	class Exception : std::exception
 	{
@@ -101,21 +117,23 @@ namespace AuEngine
 	class Output
 	{
 	public:
+		PaStream* stream;
+
 		Output() {}
 		~Output() {}
-		void ReadChunks();
 		DLL_API void CreateStream(PaDeviceIndex paDevice);
-		void FinishedCallbackMsg(void* userData);
-		DLL_API void CloseStream();
-		void OutputThread(const char* lpName);
+		DLL_API void CloseOutput(PaStream* stream);
 		DLL_API void CreateOutput(const char* lpName);
 		DLL_API const char* GetOutputDevice();
 		DLL_API int GetCPULoadStream(float fLoad);
 		DLL_API int VUGetCurrentLevels();
-		int VUMeterForSample(int count, float *buffer);
-		void VUMeterInit();
 	private:
-		PaStream* stream;
+		int  VUMeterForSample(int count, float *buffer);
+		void OutputThread(const char* lpName);
+		void FinishedCallbackMsg(void* userData);
+		void ReadChunks();
+		void VUMeterInit();
+
 		int left_phase;
 		int right_phase;
 		int numDevices, defaultDisplayed;
@@ -127,9 +145,11 @@ namespace AuEngine
 	public:
 		DLL_API void GetListOfDevices();
 		DLL_API void ReadAudioFile(const char* lpFileName);
+		FILE* oFile;
+
 	private:
-		int numDevices, defaultDisplayed;
-		const PaDeviceInfo *deviceInfo;
+		int		numDevices, defaultDisplayed;
+		const	PaDeviceInfo *deviceInfo;
 		PaStreamParameters inputParameters, outputParameters;
 	};
 };

@@ -20,6 +20,15 @@
 
 #define	MAX_NUM_ARGVS 128
 
+extern "C"
+{
+#if (defined (_WIN32) && defined(_MSC_VER))
+	typedef class AuEngine::Output eOutput;
+	typedef class AuEngine::Input eInput;
+	typedef class AuEngine::FileSystem eFS;
+#endif
+}
+
 namespace Ui { class OAU; }
 
 class OAU : public QMainWindow
@@ -29,7 +38,7 @@ class OAU : public QMainWindow
 public:
     explicit OAU(QWidget *parent = nullptr);
     ~OAU();
-	void ThrowExceptionDialog(std::string szException, std::string szDescription);
+	void ThrowExceptionDialog(QString szException, QString szDescription);
 
 private:
     Ui::OAU *ui;

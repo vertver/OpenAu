@@ -167,14 +167,13 @@
   <ItemGroup>
     <ClCompile Include="AuEngine.cpp" />
     <ClCompile Include="AuEngineFFT.cpp" />
-    <ClCompile Include="AuEngineMath.cpp" />
+    <ClCompile Include="AuEngineFilesystem.cpp" />
     <ClCompile Include="AuEngineVU.cpp" />
     <ClCompile Include="dllmain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AuEngine.h" />
     <ClInclude Include="AuEngineMath.h" />
-    <ClInclude Include="AuEngineVU.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

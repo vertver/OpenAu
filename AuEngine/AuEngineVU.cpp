@@ -6,18 +6,22 @@
 // AuEngineVU.cpp:
 // VU-meter
 /////////////////////////////////
-#include "AuEngineVU.h"
+#include "AuEngine.h"
 
 static const float start_threshold = -3;
 static const int lights_per_dB = 3;
 static const int light_count = 10;
 static char stars[11]; // must match light_count
 
+/***********************************************
+* VUGetCurrentLevels():
+* Getting current level of stream
+***********************************************/
 int AuEngine::Output::VUGetCurrentLevels()
 {
 	float sampleBlock[100];
 	int value;
-	for (int i = 0; i<(60 * 44100) / 100; ++i)
+	for (int i = 0; i < (60 * 44100) / 100; ++i)
 	{
 		const char *read_error = "", *write_error = "";
 
@@ -29,6 +33,10 @@ int AuEngine::Output::VUGetCurrentLevels()
 	return value;
 }
 
+/***********************************************
+* VUMeterForSample():
+* Counting a volume
+***********************************************/
 int AuEngine::Output::VUMeterForSample(int count, float* buffer)
 {
 	float K = 0, sum = 0, volume = 0;
@@ -51,6 +59,10 @@ int AuEngine::Output::VUMeterForSample(int count, float* buffer)
 	return valueMain;
 }
 
+/***********************************************
+* VUMeterInit():
+* Initing VU-Meter
+***********************************************/
 void AuEngine::Output::VUMeterInit()
 {
 	int i;
