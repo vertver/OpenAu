@@ -553,7 +553,7 @@ typedef struct PaStreamParameters
     int channelCount;
 
     /** The sample format of the buffer provided to the stream callback,
-     a_ReadStream() or Pa_WriteStream(). It may be any of the formats described
+     Pa_ReadStream() or Pa_WriteStream(). It may be any of the formats described
      by the PaSampleFormat enumeration.
     */
     PaSampleFormat sampleFormat;

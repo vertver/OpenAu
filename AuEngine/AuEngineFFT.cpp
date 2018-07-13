@@ -34,66 +34,58 @@ DLL_API bool OpenCL_FFT = false;
 AuEngine::Output wOut;
 AuEngine::Input wIn;
 
-FFTStruct* fftstruct = {};
-PaStream* FFTstream = wOut.stream;
+FFTStruct fftstruct;
+PaStream* FFTstream = wOut.stream;		//#TODO: FREE ALL THIS STUFF
 
-int i, j, k;
-struct fft_s *fft;
+enum WinMods
+{
+	HANN_WINDOW = 1,
+	HAMMING_WINDOW = 2,
+	BLACKMAN_WINDOW = 3,
+	BLACKMANHARRIS_WINDOW = 4
+};
 
-void AuMath::FFTProcess(void* FFT, float a[2], float b[3], float mem1[4], float mem2[4], int winmode)
+/*******************************************
+* FFTProcess():
+* Processing FFT window
+*******************************************/
+void AuMath::FFTProcess(void* FFT, float mem1[4], float mem2[4], int winmode)
 {
 	float window[FFT_SIZE];
 	float freqTable[FFT_SIZE];
-	char * noteNameTable[FFT_SIZE];
-	float notePitchTable[FFT_SIZE];
+	//char * noteNameTable[FFT_SIZE];
+	//float notePitchTable[FFT_SIZE];
 
-	if (winmode = 1)
+	switch (winmode)
+	{
+	case WinMods::HANN_WINDOW:
 		BuildHannWindow(window, FFT_SIZE);
-	else if (winmode = 2)
+		break;
+	case WinMods::HAMMING_WINDOW:
 		BuildHammingWindow(window, FFT_SIZE);
-	else if (winmode = 3)
+		break;
+	case WinMods::BLACKMAN_WINDOW:
 		BuildBlackmanWindow(window, FFT_SIZE);
-	else if (winmode = 4)
+		break;
+	case WinMods::BLACKMANHARRIS_WINDOW:
 		BuildBlackmanHarrisWindow(window, FFT_SIZE);
+		break;
+	default:
+		break;
+	}
 
 	FFT = FFTInit(FFT_EXP_SIZE);
-	ComputeSecondOrderLowPassParameters(44100, 330, a, b);
-
-	for (int i = 0; i < FFT_SIZE; ++i)
-	{
-		freqTable[i] = (44100 * i) / (float)(FFT_SIZE);
-	}
-	for (int i = 0; i < FFT_SIZE; ++i)
-	{
-		noteNameTable[i] = NULL;
-		notePitchTable[i] = -1;
-	}
-	for (int i = 0; i < 127; ++i)
-	{
-		float pitch = (440.0 / 32.0) * pow(2, (i - 9.0) / 12.0);
-		if (pitch > 44100 / 2.0)
-			break;
-		// find the closest frequency using brute force.
-		float min = 1000000000.0;
-		int index = -1;
-		for (int j = 0; j < FFT_SIZE; ++j)
-		{
-			if (fabsf(freqTable[j] - pitch) < min)
-			{
-				min = fabsf(freqTable[j] - pitch);
-				index = j;
-			}
-		}
-		//noteNameTable[index] = NOTES[i % 12];
-		//notePitchTable[index] = pitch;
-	}
 }
+
+void* fft;
+
 /*******************************************
 * FFTInit():
 * Init FFT analyser
 *******************************************/
-void* AuMath::FFTInit(int b)
+void* AuMath::FFTInit(int bit)
 {
+	int i, j, value;
 
 	fft = (struct fft_s *) malloc(sizeof(struct FFTStruct));
 	//#NOTE: fft pointer must to be free
@@ -101,24 +93,24 @@ void* AuMath::FFTInit(int b)
 	if (!fft) 
 		Msg("Could not allocate for FFT.");
 
-	fftstruct->bits = b;
+	fftstruct.bits = bit;
 
-	if (fftstruct->bits > 15)
+	if (fftstruct.bits > 15)
 		Msg("A lot of bits at struct");
 
-	for (i = (1 << fftstruct->bits) - 1; i >= 0; --i) 
+	for (i = (1 << fftstruct.bits) - 1; i >= 0; --i)
 	{
-		k = 0;
-		for (j = 0; j < fftstruct->bits; ++j) 
+		value = 0;
+		for (j = 0; j < fftstruct.bits; ++j)
 		{
-			k *= 2;
+			value *= 2;
 
 			if (i & (1 << j)) 
 			{ 
-				k += 1; 
+				value += 1;
 			}
 		}
-		fftstruct->bitReverse[i] = k;
+		fftstruct.bitReverse[i] = value;
 	}
 	return fft;
 }
@@ -132,45 +124,46 @@ void AuMath::FFTClose()
 * ConvertToFFT():
 * Convert data to FFT massive
 *******************************************/
-void AuMath::ConvertToFFT(void * fft, float *xr, float *xi, bool inv)
+void AuMath::ConvertToFFT(void* fft, float *xr, float *xi, bool inv)
 {
 	if (!OpenCL_FFT)
 	{
-		int n, n2, i, k, kn2, l, p;
-		float ang, s, c, tr, ti;
+		int Count, HalfCount, AmountCountK, BitsCount, i, k, p;
+		float ang, sinus, cosinus, tr, ti;
 
-		n = 1 << fftstruct->bits;
-		n2 = n / 2;
+		Count = 1 << fftstruct.bits;
+		HalfCount = Count / 2;
 
-		for (l = 0; l < fftstruct->bits; ++l)
+		for (BitsCount = 0; BitsCount < fftstruct.bits; ++BitsCount)
 		{
-			for (k = 0; k < n; k += n2)
+			for (k = 0; k < Count; k += HalfCount)
 			{
-				for (i = 0; i < n2; ++i, ++k)
+				for (i = 0; i < HalfCount; ++i, ++k)
 				{
-					p = fftstruct->bitReverse[k / n2];
-					ang = 6.283185f * p / n;
-					c = cos(ang);
-					s = sin(ang);
+					p = fftstruct.bitReverse[k / HalfCount];
+					ang = 6.283185f * p / Count;
+					cosinus = cos(ang);
+					sinus = sin(ang);
 
-					kn2 = k + n2;
+					AmountCountK = k + HalfCount;
 
-					if (inv) s = -s;
+					if (inv) 
+						sinus = -sinus;
 
-					tr = xr[kn2] * c + xi[kn2] * s;
-					ti = xi[kn2] * c - xr[kn2] * s;
-					xr[kn2] = xr[k] - tr;
-					xi[kn2] = xi[k] - ti;
+					tr = xr[AmountCountK] * cosinus + xi[AmountCountK] * sinus;
+					ti = xi[AmountCountK] * cosinus - xr[AmountCountK] * sinus;
+					xr[AmountCountK] = xr[k] - tr;
+					xi[AmountCountK] = xi[k] - ti;
 					xr[k] += tr;
 					xi[k] += ti;
 				}
 			}
-			n2 /= 2;
+			HalfCount /= 2;
 		}
 
-		for (k = 0; k < n; ++k)
+		for (k = 0; k < Count; ++k)
 		{
-			i = fftstruct->bitReverse[k];
+			i = fftstruct.bitReverse[k];
 			if (i <= k)
 				continue;
 			tr = xr[k];
@@ -186,8 +179,8 @@ void AuMath::ConvertToFFT(void * fft, float *xr, float *xi, bool inv)
 		{
 			float f;
 
-			f = 1.0f / n;
-			for (i = 0; i < n; ++i)
+			f = 1.0f / Count;
+			for (i = 0; i < Count; ++i)
 			{
 				xr[i] *= f;
 				xi[i] *= f;

@@ -21,7 +21,7 @@ int AuEngine::Output::VUGetCurrentLevels()
 {
 	float sampleBlock[100];
 	int value;
-	for (int i = 0; i < (60 * 44100) / 100; ++i)
+	for (int i = 0; i < (60 * SAMPLE_RATE) / 100; ++i)
 	{
 		const char *read_error = "", *write_error = "";
 
@@ -53,9 +53,8 @@ int AuEngine::Output::VUMeterForSample(int count, float* buffer)
 	volume += (light_count * lights_per_dB);
 	volume = fmax(0, volume);
 	volume /= lights_per_dB;
-	int v = fmin(volume, light_count);
 	//printf("%6.2f %d %s\n", origVolume, v, stars + (light_count - v));
-	int valueMain = v;
+	int valueMain = fmin(volume, light_count);
 	return valueMain;
 }
 

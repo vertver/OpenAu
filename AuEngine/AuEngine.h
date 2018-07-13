@@ -31,6 +31,7 @@ std::string freadStr(FILE* f, size_t len);
 #define THROW_EXCEPTION(x) 		throw AuEngine::Exception(x)
 #define DEBUG_BREAK				__debugbreak()		// int 3
 #define FFT_SIZE				1024
+#define SAMPLE_RATE				44100
 
 #ifdef WIN32
 #define ENGINE_EXPORTS
@@ -41,6 +42,7 @@ std::string freadStr(FILE* f, size_t len);
 #else
 #define DLL_API					__declspec(dllimport)
 #endif
+
 
 /***********************************************
 * class AuEngine:
@@ -66,6 +68,7 @@ namespace AuEngine
 	// Opset list for exception class
 	enum OpSet
 	{
+		FILESYSYEM_ERROR,
 		SUCCESS_ERROR,
 		NO_AUDIO_DEVICE,
 		MME_ERROR,
@@ -89,6 +92,7 @@ namespace AuEngine
 		FLAC_FLIE	= 6,
 		AAC_FILE	= 7
 	};	
+
 	class FileSystem
 	{
 	public:
@@ -109,19 +113,19 @@ namespace AuEngine
 			opSetDescr = opSet;
 		}
 		Exception(OpSet opSet) noexcept { opSetDescr = opSet; }	// Constructor with opset
-		Exception() {}											// Constructor with exception
-		~Exception() {};										// Destructor
+		Exception() {}												// Constructor with exception
+		~Exception() {}											// Destructor
 		const char* what() const noexcept { return errMessage.c_str(); }
 		OpSet opset() const { return opSetDescr; }
 	};
 	class Output
 	{
 	public:
-		PaStream* stream;
+		PaStream * stream;
 
 		Output() {}
 		~Output() {}
-		DLL_API void CreateStream(PaDeviceIndex paDevice);
+		DLL_API void CreateStream(PaDeviceIndex paDeviceOutput, PaDeviceIndex paDeviceInput);
 		DLL_API void CloseOutput(PaStream* stream);
 		DLL_API void CreateOutput(const char* lpName);
 		DLL_API const char* GetOutputDevice();

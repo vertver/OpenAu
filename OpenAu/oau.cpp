@@ -18,13 +18,33 @@
 ***********************************************/
 OAU::OAU(QWidget *parent) : QMainWindow(parent), ui(new Ui::OAU)
 {
-	eInput input;
-	eOutput output;
-
     ui->setupUi(this);
-	statusBar()->showMessage(tr(output.GetOutputDevice()));	
-	output.CreateOutput("I:\\Beliver (44.1-24 flac vs mp3 320).wav");
+}
 
+/***********************************************
+* OpenAudioFile():
+* Open any audio file at directory
+***********************************************/
+QString OAU::OpenAudioFile()
+{
+	return QFileDialog::getOpenFileName(this, tr("Open Audio"), NULL, tr("Audio Files (*.wav)"));
+}
+
+/***********************************************
+* PlayAudioFile():
+* Send current file to stream
+***********************************************/
+void OAU::PlayAudioFile(QString aFile)
+{
+	if (aFile.isEmpty())
+	{
+#ifdef DEBUG
+		MessageBoxA(NULL, "The path string is empty", "Warning!", MB_OK | MB_ICONWARNING);
+#endif
+		Sleep(0);
+	}
+	else
+		output.CreateOutput(aFile.toLocal8Bit());
 }
 
 /***********************************************
@@ -48,4 +68,13 @@ void OAU::ThrowExceptionDialog(QString szException, QString szDescription)
 	excd->setWindowTitle("Application error");
 	excd->show();
 	excd->setTextToLabels(szException, szDescription);
+}
+
+/***********************************************
+* OpenAudioFile():
+* Open any audio file at directory
+***********************************************/
+void OAU::on_pushButton_clicked()
+{
+	PlayAudioFile(OpenAudioFile());
 }

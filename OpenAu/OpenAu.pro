@@ -26,11 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         oau.cpp \
-    ExcDialog.cpp
+    ExcDialog.cpp \
+    ../AuEngine/AuEngine.cpp
 
 HEADERS += \
         oau.h \
-    ExcxDialog.h
+    ExcxDialog.h \
+    ../AuEngine/AuEngine.h
 
 FORMS += \
         oau.ui \

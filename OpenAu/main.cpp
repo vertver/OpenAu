@@ -68,7 +68,7 @@ int main_impl(int argc, char *argv[])
 		w.show();
 		Msg("AuEngine: UI Loaded");
 
- 		return a.exec();
+  		return a.exec();
 	}
 	catch (AuEngine::Exception& exc)
 	{
@@ -86,6 +86,13 @@ int main_impl(int argc, char *argv[])
 			ExceptionTextThrow("AuEngine Error: Can't initialize user interface",
 				"Can't initialize user interface. Please, re-install application or check directory",
 				"UI Init error");
+			return 0x0000328C;
+			break;
+
+		case AuEngine::OpSet::FILESYSYEM_ERROR:		// if FILE can't create thread
+			ExceptionTextThrow("AuEngine Error: Can't open audiofile",
+				"Can't open audiofile. Please, check your files for damage.",
+				"Filesystem error");
 			return 0x0000328C;
 			break;
 
@@ -150,6 +157,6 @@ int main(int argc, char *argv[])
 	catch (...)
 	{
 		MessageBoxA(NULL, "Unknown Error. Please, close the window.", "Unknown Error", MB_OK | MB_ICONHAND);
-		return 0;
+		return 0xFFFFFFFF;
 	}
 }

@@ -1,26 +1,11 @@
-﻿  AuEngineFFT.cpp
-i:\oau\auengine\auenginefft.cpp(158): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-i:\oau\auengine\auenginefft.cpp(168): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-i:\oau\auengine\auenginefft.cpp(185): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-i:\oau\auengine\auenginefft.cpp(204): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-i:\oau\auengine\auenginefft.cpp(221): warning C4018: <: несоответствие типов со знаком и без знака
-i:\oau\auengine\auenginefft.cpp(242): warning C4244: =: преобразование "double" в "float", возможна потеря данных
-i:\oau\auengine\auenginefft.cpp(268): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-i:\oau\auengine\auenginefft.cpp(272): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
-  Создание кода...
-  Компиляция...
-  AuEngine.cpp
-i:\oau\auengine\auengine.cpp(71): warning C4267: -=: преобразование из "size_t" в "unsigned long"; возможна потеря данных
-i:\oau\auengine\auengine.cpp(277): warning C4101: FFT: неиспользованная локальная переменная
-i:\oau\auengine\auengine.cpp(278): warning C4101: math: неиспользованная локальная переменная
-i:\oau\auengine\auengine.cpp(448): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(449): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(450): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(451): warning C4244: аргумент: преобразование "const PaTime" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(454): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-i:\oau\auengine\auengine.cpp(495): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(500): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-i:\oau\auengine\auengine.cpp(505): warning C4244: аргумент: преобразование "double" в "int", возможна потеря данных
-  Создание кода...
-     Создается библиотека I:\OAU\x64\Debug\AuEngine.lib и объект I:\OAU\x64\Debug\AuEngine.exp
+﻿  AuEngine.cpp
+i:\oau\auengine\auengine.cpp(73): warning C4267: '-=': conversion from 'size_t' to 'unsigned long', possible loss of data
+i:\oau\auengine\auengine.cpp(406): warning C4244: 'argument': conversion from 'const PaTime' to 'int', possible loss of data
+i:\oau\auengine\auengine.cpp(407): warning C4244: 'argument': conversion from 'const PaTime' to 'int', possible loss of data
+i:\oau\auengine\auengine.cpp(408): warning C4244: 'argument': conversion from 'const PaTime' to 'int', possible loss of data
+i:\oau\auengine\auengine.cpp(409): warning C4244: 'argument': conversion from 'const PaTime' to 'int', possible loss of data
+i:\oau\auengine\auengine.cpp(412): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+i:\oau\auengine\auengine.cpp(453): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+i:\oau\auengine\auengine.cpp(458): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+i:\oau\auengine\auengine.cpp(463): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   AuEngine.vcxproj -> I:\OAU\x64\Debug\AuEngine.dll

@@ -13,12 +13,14 @@
 #include <exception>
 #include <QApplication>
 #include <QMainWindow>
+#include <QFileDialog>
 #include "ui_oau.h"
 #include <QMessageBox>
 #include <math.h>
 #include "../AuEngine/AuEngine.h"
 
 #define	MAX_NUM_ARGVS 128
+
 
 extern "C"
 {
@@ -37,11 +39,20 @@ class OAU : public QMainWindow
 
 public:
     explicit OAU(QWidget *parent = nullptr);
-    ~OAU();
+	QString OpenAudioFile();
+	void PlayAudioFile(QString aFile);
+	~OAU();
 	void ThrowExceptionDialog(QString szException, QString szDescription);
+
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::OAU *ui;
+
+	eOutput output;
+	eInput input;
 };
 
 
