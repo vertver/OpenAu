@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PortAudio", "PortAudio\buil
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AuEngineer", "AuEngineer\AuEngineer.vcxproj", "{44369705-7867-409B-913E-6258ACA44AB8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rd-party", "3rd-party", "{FE7DB3C0-C046-4763-9510-4E1D6F03E698}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -73,8 +75,11 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A18A071-125E-442F-AFF7-A3F68ABECF99} = {FE7DB3C0-C046-4763-9510-4E1D6F03E698}
+	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {430528D8-429A-4DA2-94B6-2FC5F51A01D1}
 		Qt5Version = msvc2017_64
+		SolutionGuid = {430528D8-429A-4DA2-94B6-2FC5F51A01D1}
 	EndGlobalSection
 EndGlobal
